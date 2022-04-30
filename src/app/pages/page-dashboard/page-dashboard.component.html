@@ -1,0 +1,38 @@
+<div class="main-container">
+
+  <div class="row min-height-600 no-flex-wrap">
+    <div class="card col-md-2 mr-2 pb-2 pt-2">
+      <div class="col">
+        <div>
+          <h4> Brazil burger</h4>
+          <div>
+            <app-menu></app-menu>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card col-md-10 pl-8 pr-8 backgroung-grey border-none  pb-2 pt-2">
+      <div class="col pl-8 pr-8 d-flex flex-column justify-content-between">
+        <div class="card p-3 min-height-80 mb-2">
+         <app-header></app-header>
+        </div>
+        <div class="card mb-2" style="min-height: 500px">
+          <router-outlet></router-outlet>
+        </div>
+        <div class="card">
+          <div class=" container-fluid">
+            <div class=" copyright">
+              &copy; Make
+              <i class=" tim-icons icon-heart-2"> </i> by
+              <a href="https://www.linkedin.com/in/saint-pierre-eliakim-kassi-2b6053233/" target="_blank"> Saint-Pierre KASSI </a>
+              for Brazil Burger.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
