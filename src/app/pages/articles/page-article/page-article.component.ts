@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {ProduitService} from "../../../shared/services/produit.service";
+import {Products} from "../../../shared/services/models/products";
 
 @Component({
   selector: 'app-page-article',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageArticleComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private productsServ:ProduitService
+  ) { }
 
+  public products :Products[]=[];
   ngOnInit(): void {
+    this.productsServ.getProducts().subscribe(
+      products => this.products=products
+    )
+
+  }
+
+  nouvelArticle(): void{
+    this.router.navigate(['newarticle']);
   }
 
 }

@@ -1,1 +1,17 @@
-<p>page-article works!</p>
+<div class="col">
+  <div class="row m-3">
+    <div class="col-md-8 p-0">
+      <h2>Listes des articles</h2>
+    </div>
+    <div class="col-md-4 text-end">
+      <app-boutton-action  (clickEvent)="nouvelArticle()">
+      </app-boutton-action>
+    </div>
+  </div>
+  <div class="col m-3">
+    <app-details-article></app-details-article>
+  </div>
+  <div class="row  mb-3 text-center">
+    <app-pagination></app-pagination>
+  </div>
+</div>

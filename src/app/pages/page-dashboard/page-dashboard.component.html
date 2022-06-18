@@ -4,9 +4,12 @@
     <div class="card col-md-2 mr-2 pb-2 pt-2">
       <div class="col">
         <div>
-          <h4> Brazil burger</h4>
+          <h2>Brazil burger</h2>
           <div>
             <app-menu></app-menu>
+          </div>
+          <div class="col-md-3" *ngIf="isLogin">
+                <button (click)="onLogout()" type="button" class="btn btn-danger">Deconnexion</button>
           </div>
         </div>
       </div>

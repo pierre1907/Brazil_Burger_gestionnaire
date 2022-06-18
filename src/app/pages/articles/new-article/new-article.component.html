@@ -5,43 +5,38 @@
   <hr>
   <div class="col-md-12 p-3 ">
     <div class="col-md-12 mb-3">
-      <h2><i class="fa fa-info-circle">&nbsp; Informations de l'articles</i></h2>
+      <h2><i class="fa fa-info-circle">&nbsp;Informations de l'articles</i></h2>
     </div>
     <div class="col-md-12">
-      <form>
+      <form #AjoutArticle="ngForm">
         <div class="row mb-3">
           <div class="col">
-            <input type="text" class="form-control" placeholder="id">
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Nom de l'article">
+            <input required name="nomArticle" [(ngModel)]="nomArticle" type="text" class="form-control" placeholder="Nom de l'article">
           </div>
         </div>
-
         <div class="row mb-3">
           <div class="col">
-            <input type="int" class="form-control" placeholder="prix">
+            <input name="prix" required [(ngModel)]="prix" type="int" class="form-control" placeholder="prix">
           </div>
 
-          <div class="col">
-            <select class="custom-select">
-              <option selected>Choisir la categorie</option>
-              <option value="1">Burger</option>
-              <option value="2">Complement</option>
-              <option value="3">Menu</option>
+          <div class="col" >
+            <select class="custom-select" name="categorie" [(ngModel)]="categorie" required>
+              <option selected>Choisir categorie</option>
+              <option value="Burger">Burger</option>
+              <option value="Complement">Complement</option>
+              <option value="Menu">Menu</option>
             </select>
           </div>
         </div>
-
       </form>
     </div>
   </div>
 
   <div class="col-12 text-end ">
-    <button class="btn btn-danger ml-3">
+    <button class="btn btn-danger me-3" (click)="listarticle()" >
       <i class="fa fa-ban"></i> &nbsp;Annuler
     </button>
-    <button class="btn btn-success ">
+    <button class="btn btn-success me-3" [disabled]= "AjoutArticle.form.invalid" type="button" (click)="AjoutArticleAction()">
       <i class="fa fa-save"></i> &nbsp;Enregistrer
     </button>
   </div>

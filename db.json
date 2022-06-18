@@ -1,0 +1,101 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "nom": "KASSI 1",
+      "prix": 2500,
+      "categorie": "Burger",
+      "image": "./assets/images/burger.png"
+    },
+    {
+      "id": 2,
+      "nom": "Menu Gato",
+      "prix": 7500,
+      "categorie": "menu",
+      "image": "./assets/images/fries.png"
+    },
+    {
+      "id": 3,
+      "nom": "Coca",
+      "prix": 400,
+      "categorie": "complement",
+      "image": "./assets/images/cola.png"
+    },
+    {
+      "nom": "Menu test",
+      "prix": "5000",
+      "categorie": "Menu",
+      "image": "./assets/images/wrap.png",
+      "id": 4
+    },
+    {
+      "nom": "menu presentation",
+      "prix": "5000",
+      "categorie": "Menu",
+      "id": 5
+    },
+    {
+      "nom": "burger",
+      "prix": "1500",
+      "categorie": "Burger",
+      "id": 6
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "nom": "KASSI",
+      "prenom": "Saint-Pierre",
+      "login": "ksi@admin.bb",
+      "password": "KsiAdmin",
+      "role": "gestionnaire"
+    },
+    {
+      "id": 2,
+      "nom": "KWAMO",
+      "prenom": "Rahayu",
+      "login": "krr@admin.bb",
+      "password": "KrrAdmin",
+      "role": "gestionnaire"
+    },
+    {
+      "id": 3,
+      "nom": "LAGO",
+      "prenom": "Israela",
+      "login": "lgo@client.bb",
+      "password": "LgoClient",
+      "role": "client",
+      "telephone": 774655952
+    },
+    {
+      "id": 4,
+      "nom": "HOUGA",
+      "prenom": "Dominique",
+      "login": "hga@client.bb",
+      "password": "HgaAdmin",
+      "role": "client",
+      "telephone": 774655953
+    },
+    {
+      "nomComplet": "Saint-Pierre KASSI",
+      "telephone": "774655952",
+      "login": "ksi@shop.com",
+      "password": "PASSER123@",
+      "role": "ROLE_CLIENT",
+      "id": 5
+    }
+  ],
+  "commandes": [
+    {
+      "id": 1,
+      "Date": "10/05/2022",
+      "montant": "10500",
+      "client": "Dominique",
+      "etat": "payé",
+      "articles": [
+        "burger 1",
+        "Menu 1"
+      ]
+    }
+  ]
+}

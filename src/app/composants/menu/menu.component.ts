@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Menu} from "./menu";
 import {Router} from "@angular/router";
+import {PageLoginComponent} from "../../pages/page-login/page-login.component";
+import {CategorieService} from "../../shared/services/categorie.service";
+import {LoginService} from "../../shared/services/login.service";
+import {Categories} from "../../shared/services/models/categories";
+
 
 
 @Component({
@@ -14,19 +19,13 @@ export class MenuComponent implements OnInit {
     {
       id: '1',
       titre: 'Tableau de Bord',
-      icon: 'fas fa-chart-line',
+      icon: 'fa fa-chart-pie-simple',
       url: '',
       sousMenu: [
         {
           id: '11',
-          titre: 'Vue d\'ensemble',
-          icon: '',
-          url: '',
-        },
-        {
-          id: '12',
           titre: 'Statistiques',
-          icon: '',
+          icon: 'fa fa-chart-bar',
           url: 'statistiques',
         }
       ]
@@ -34,73 +33,84 @@ export class MenuComponent implements OnInit {
     {
       id: '2',
       titre: 'Articles',
-      icon: '',
+      icon: 'fa fa-burger-soda',
       url: '',
       sousMenu: [
         {
           id: '21',
-          titre: 'Burger',
+          titre: 'Liste des Articles',
           icon: '',
-          url: 'burgers',
-        },
-        {
-          id: '22',
-          titre: 'Menu',
-          icon: '',
-          url: 'menus',
-        },
-        {
-          id: '23',
-          titre: 'Complement',
-          icon: '',
-          url: 'complements',
+          url: 'listarticle',
         }
       ]
     },
     {
       id: '3',
       titre: 'Commandes',
-      icon: '',
+      icon: 'fa fa-stack-overflow',
       url: '',
       sousMenu: [
         {
           id: '31',
           titre: 'Commandes par client',
-          icon: '',
+          icon: 'fa fa-users',
           url: 'cmdclient',
         },
         {
           id: '32',
           titre: 'Commandes par date',
-          icon: '',
-          url: '',
+          icon: 'fa fa-calendar-days',
+          url: 'cmddate',
         },
         {
           id: '33',
           titre: 'Commandes par etat',
           icon: '',
-          url: '',
+          url: 'cmdetat',
         },
         {
           id: '34',
           titre: 'Commandes par Burger/Menu',
           icon: '',
-          url: '',
+          url: 'cmdburger',
         }
       ]
     }
-
   ]
 
+  private lastSelectedMenu: Menu | undefined;
+  constructor(private catServ:CategorieService,private router:Router,
+              private authServ:LoginService) {
 
-  constructor(
-    private  router: Router
-  ) { }
-
-  ngOnInit(): void {
   }
 
-  navigate(url?: string): void {
-    this.router.navigate([url]);
+
+  isLogin:boolean=false;
+  categories:Categories[]=[];
+
+  ngOnInit(): void {
+    this.catServ.getCategories().subscribe(categories=>this.categories=categories);
+
+    this.authServ.isLogin.asObservable().subscribe(isLogin=>this.isLogin=isLogin);
+  }
+
+  navigate(menu: Menu): void {
+    if (this.lastSelectedMenu){
+      this.lastSelectedMenu.active=false;
+    }
+    menu.active= true;
+    this.lastSelectedMenu = menu;
+    this.router.navigate([menu.url]);
+  }
+  async onLoadView(idCat:any){
+    await this.router.navigateByUrl(".",{skipLocationChange:true});
+    this.router.navigateByUrl("/product/categories/"+idCat);
+
+  }
+
+  onLogout(){
+    this.authServ.logout();
+    this.authServ.isLogin.next(false);
+    this.router.navigateByUrl("/product");
   }
 }

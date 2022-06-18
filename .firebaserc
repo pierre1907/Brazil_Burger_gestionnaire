@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "brazilburger-87dfb": {
+      "hosting": {
+        "brazil_burger_gest": [
+          "brazilburger-87dfb"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "brazilburger-87dfb"
+  }
+}
